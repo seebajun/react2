@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from 'react';
+import Login from './Components/login/Login.jsx';
+import Alert from './Components/alert/Alert.jsx';
 
 function App() {
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Login setError={setError} setSuccess={setSuccess} />
+      {error && <Alert error={error} />}
+      {success && <Alert success={success} />}
     </div>
   );
 }
